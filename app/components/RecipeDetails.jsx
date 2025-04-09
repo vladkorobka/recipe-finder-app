@@ -7,13 +7,7 @@ const RecipeDetails = async ({ id }) => {
   );
 
   if (!res.ok) {
-    return (
-      <div className="flex justify-center">
-        <p className="inline-block px-4 py-2 my-auto bg-red-400 text-white rounded-xl">
-          Failed to fetch recipe details!
-        </p>
-      </div>
-    );
+    throw new Error("Failed to fetch recipe details!");
   }
 
   const recipe = await res.json();

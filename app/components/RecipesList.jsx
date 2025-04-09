@@ -27,13 +27,7 @@ const RecipesList = async ({ searchParams }) => {
   );
 
   if (!res.ok) {
-    return (
-      <div className="flex justify-center">
-        <p className="inline-block px-4 py-2 my-auto bg-red-400 text-white rounded-xl">
-          Failed to fetch recipes!
-        </p>
-      </div>
-    );
+    throw new Error("Failed to fetch recipes");
   }
 
   const recipesArr = await res.json();
