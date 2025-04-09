@@ -6,13 +6,7 @@ const RecipeDetailsPage = ({ params }) => {
   return (
     <main>
       <div>
-        <Suspense
-          fallback={
-            <p className="text-center text-gray-500">
-              <Loader />
-            </p>
-          }
-        >
+        <Suspense fallback={<Loader />}>
           <RecipeDetails id={params.id} />
         </Suspense>
       </div>

@@ -2,8 +2,9 @@ import Link from "next/link";
 
 const RecipesList = async ({ searchParams }) => {
   const { query = "", cuisine = "", maxReadyTime = "" } = searchParams;
-  const apiKey = process.env.SPOONACULAR_API_KEY;
-  const params = new URLSearchParams();
+  const params = new URLSearchParams({
+    apiKey: process.env.SPOONACULAR_API_KEY,
+  });
 
   if (query) {
     params.append("query", query);
@@ -17,27 +18,31 @@ const RecipesList = async ({ searchParams }) => {
     params.append("maxReadyTime", maxReadyTime);
   }
 
-  params.append("apiKey", apiKey);
-
   const res = await fetch(
     `https://api.spoonacular.com/recipes/complexSearch?${params.toString()}`,
     {
       next: { revalidate: 60 },
-    }
+    },
   );
 
   if (!res.ok) {
     return (
-      <p className="inline-block px-4 py-2 my-auto bg-red-400 text-white rounded-xl">
-        Failed to fetch recipes!
-      </p>
+      <div className="flex justify-center">
+        <p className="inline-block px-4 py-2 my-auto bg-red-400 text-white rounded-xl">
+          Failed to fetch recipes!
+        </p>
+      </div>
     );
   }
 
   const recipesArr = await res.json();
 
   if (!recipesArr.results || recipesArr.results.length === 0) {
-    return <p className="text-gray-700 text-center">No recipes found.</p>;
+    return (
+      <div className="flex justify-center">
+        <p className="text-gray-700 text-center">No recipes found.</p>
+      </div>
+    );
   }
 
   return (
