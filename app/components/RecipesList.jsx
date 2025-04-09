@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 const RecipesList = async ({ searchParams }) => {
-  const { query = "", cuisine = "", maxReadyTime = "" } = searchParams;
+  const { query = "", cuisine = "", maxReadyTime = "" } = await searchParams;
+
   const params = new URLSearchParams({
     apiKey: process.env.SPOONACULAR_API_KEY,
   });
