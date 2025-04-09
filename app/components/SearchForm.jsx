@@ -46,7 +46,7 @@ const SearchForm = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+          className="border border-gray-300 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-black"
           placeholder="find dish..."
         />
 
@@ -55,7 +55,7 @@ const SearchForm = () => {
           <select
             value={cuisine}
             onChange={(e) => setCuisine(e.target.value)}
-            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+            className="w-full border border-gray-300 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-black"
           >
             <option value=""></option>
             <option value="Italian">Italian</option>
@@ -71,7 +71,7 @@ const SearchForm = () => {
             type="number"
             value={preparationTime}
             onChange={(e) => setPreparationTime(e.target.value)}
-            className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+            className="w-full border border-gray-300 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-black"
             min="0"
           />
         </label>
@@ -79,7 +79,7 @@ const SearchForm = () => {
         <button
           disabled={!isFormValid}
           onClick={handleNextBtnClick}
-          className={`w-full p-3 rounded-xl font-semibold transition ${
+          className={`w-full p-3 rounded-sm font-semibold transition ${
             isFormValid
               ? "bg-gray-800 text-white hover:bg-gray-700"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"

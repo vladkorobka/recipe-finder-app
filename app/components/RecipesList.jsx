@@ -51,12 +51,12 @@ const RecipesList = async ({ searchParams }) => {
         <Link
           key={recipe.id}
           href={`/recipes/${recipe.id}`}
-          className="bg-white rounded-2xl shadow hover:shadow-lg transition"
+          className="rounded-sm shadow hover:shadow-md transition"
         >
           <img
             src={recipe.image}
             alt={recipe.title}
-            className="w-full h-48 object-cover rounded-t-2xl"
+            className="w-full h-48 object-cover rounded-sm"
           />
           <div className="p-4">
             <h2 className="text-lg font-semibold">{recipe.title}</h2>

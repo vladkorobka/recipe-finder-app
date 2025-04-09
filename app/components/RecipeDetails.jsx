@@ -2,15 +2,29 @@ const RecipeDetails = async ({ id }) => {
   const res = await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.SPOONACULAR_API_KEY}`,
     {
-      next: { revalidate: 60 }, // 1 minute cache
+      next: { revalidate: 60 },
     },
   );
 
-  if (!res.ok) return notFound();
+  if (!res.ok) {
+    return (
+      <div className="flex justify-center">
+        <p className="inline-block px-4 py-2 my-auto bg-red-400 text-white rounded-xl">
+          Failed to fetch recipe details!
+        </p>
+      </div>
+    );
+  }
 
   const recipe = await res.json();
 
-  if (!recipe.title) return notFound();
+  if (!recipe.title) {
+    return (
+      <div className="flex justify-center">
+        <p className="text-gray-700 text-center">No recipes found.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 space-y-4">
