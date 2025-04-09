@@ -33,7 +33,6 @@ const SearchForm = () => {
     if (preparationTime > 0) {
       params.append("maxReadyTime", preparationTime);
     }
-    console.log(params.toString());
 
     router.push(`/recipes?${params.toString()}`);
   };
